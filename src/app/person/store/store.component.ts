@@ -1,6 +1,5 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialog} from "@angular/material/dialog";
-import {DialogAnimationsExampleDialog} from "../edit/edit.component";
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {PersonService} from "../../services/person.service";
 import {Observable} from "rxjs";

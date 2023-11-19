@@ -1,14 +1,11 @@
 import {OnInit, Component, ViewChild} from '@angular/core';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatTableDataSource} from '@angular/material/table';
-import {environment} from "../environments/environment";
 import {PersonService} from "./services/person.service";
 import {Person} from "./models/person.model";
 import {MatSort} from "@angular/material/sort";
 import {MatDialog, MatDialogRef} from "@angular/material/dialog";
-import {EditComponent} from "./person/edit/edit.component";
 import {StoreComponent} from "./person/store/store.component";
-import {Observable} from "rxjs";
 
 
 @Component({
