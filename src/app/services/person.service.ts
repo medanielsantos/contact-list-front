@@ -20,15 +20,20 @@ export class PersonService {
     return this.httpClient.get(this.url + '/person');
   }
 
+  getPersonById(id: number): Observable<any> {
+    return this.httpClient.get(this.url + '/person/' + id);
+  }
+
   favoritePerson(id: number): Observable<any> {
     return this.httpClient.put(this.url + '/person/' + id + '/favorite/', { id });
   }
 
-  editPerson(id: number): Observable<any> {
-    return this.httpClient.patch(this.url + '/person/' + id, {
-      name: this.name,
-      is_favorite: this.is_favorite
-    });
+  storePerson(person: Person): Observable<any> {
+    return this.httpClient.post(this.url + '/person', person);
+  }
+
+  updatePerson(id: number, person: Person): Observable<any> {
+    return this.httpClient.patch(this.url + '/person/' + id, person);
   }
 
   deletePerson(id: number): Observable<any> {

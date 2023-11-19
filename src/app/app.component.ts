@@ -5,8 +5,10 @@ import {environment} from "../environments/environment";
 import {PersonService} from "./services/person.service";
 import {Person} from "./models/person.model";
 import {MatSort} from "@angular/material/sort";
-import {MatDialog} from "@angular/material/dialog";
+import {MatDialog, MatDialogRef} from "@angular/material/dialog";
 import {EditComponent} from "./person/edit/edit.component";
+import {StoreComponent} from "./person/store/store.component";
+import {Observable} from "rxjs";
 
 
 @Component({
@@ -54,14 +56,22 @@ export class AppComponent implements OnInit{
 
         this.dataSource.paginator = this.paginator;
         this.dataSource.sort = this.sort;
-
-        console.log(this.dataSource);
-      },
+        },
       error: (error) => {
         console.log(error);
       }
     });
   }
+
+  getPersonById(id: number) {
+    this.personService.getPersonById(id).subscribe({
+      next: (res) => {
+        this.dataSource = new MatTableDataSource<any>(res.data);
+        this.dataSource.paginator = this.paginator;
+      }
+    });
+    }
+
 
   toggleFavorite(id: number) {
     this.personService.favoritePerson(id).subscribe({
@@ -74,14 +84,34 @@ export class AppComponent implements OnInit{
     });
   }
 
-  editPerson(id: number) {
-    const openDialog = this.dialog.open(EditComponent);
+  addPerson() {
+    const openDialog = this.dialog.open(StoreComponent, {
+      width: '500px',
+    });
 
-    openDialog.afterClosed().subscribe({
+    this.openAfterModal(openDialog);
+  }
+
+  updatePerson(id: number) {
+    this.personService.getPersonById(id).subscribe({
       next: (res) => {
-        this.personService.editPerson(id).subscribe({
+        const openDialog = this.dialog.open(StoreComponent, {
+          width: '500px',
+          data: res.data
+        });
+
+        this.openAfterModal(openDialog);
+      }
+    });
+  }
+
+  private openAfterModal(openDialog: MatDialogRef<StoreComponent, any>) {
+    openDialog.afterClosed().subscribe({
+      next: () => {
+        this.personService.getPerson().subscribe({
           next: (res) => {
-            this.getPersonList();
+            this.dataSource = new MatTableDataSource<any>(res.data);
+            this.dataSource.paginator = this.paginator;
           },
           error: (error) => {
             console.log(error);

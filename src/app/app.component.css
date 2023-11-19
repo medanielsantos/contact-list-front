@@ -2,11 +2,21 @@
   padding: 50px;
 }
 
+
+.align-right {
+  display: flex;
+  justify-content: flex-end;
+}
+
 .actions .mat-mdc-button-base {
   margin: 8px 8px 8px 0;
 }
 table {
   width: 80%;
+}
+
+.modal-input {
+  width: 100%;
 }
 
 .mat-mdc-form-field {
