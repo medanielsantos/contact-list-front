@@ -34,4 +34,16 @@ export class ViewComponent {
     });
   }
 
+  deleteContact(id: number) {
+    this._contactService.deleteContact(id).subscribe({
+      next: (res) => {
+        this._personService.getPersonById(this.data.id).subscribe({
+          next: (res) => {
+            this.dataSource = new MatTableDataSource<any>(res.data.contacts);
+          }
+        });
+      }
+    });
+  }
+
 }

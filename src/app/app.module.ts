@@ -16,6 +16,7 @@ import {MatCheckboxModule} from "@angular/material/checkbox";
 import { StoreComponent } from './person/store/store.component';
 import {ReactiveFormsModule} from "@angular/forms";
 import { ViewComponent } from './person/view/view.component';
+import {MatToolbarModule} from "@angular/material/toolbar";
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { ViewComponent } from './person/view/view.component';
     MatInputModule,
     MatDialogModule,
     MatCheckboxModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatToolbarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,3 +1,12 @@
+<mat-toolbar>
+  <h2>Contacts</h2>
+  <span class="toolbar"></span>
+  <button mat-raised-button	color="primary">
+    Add
+    <mat-icon>add</mat-icon>
+  </button>
+</mat-toolbar>
+
 <div mat-dialog-content>
   <section class="example-container mat-elevation-z8" tabindex="0">
     <table mat-table [dataSource]="dataSource">
@@ -30,7 +39,7 @@
               Edit
               <mat-icon>edit</mat-icon>
             </button>
-            <button mat-raised-button	color="warn">
+            <button mat-raised-button	color="warn" (click)="deleteContact(item.id)">
               Delete
               <mat-icon>delete</mat-icon>
             </button>

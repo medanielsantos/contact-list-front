@@ -3,6 +3,7 @@ import { HttpClient } from "@angular/common/http";
 import { environment } from "../../environments/environment";
 import { Person } from "../models/person.model";
 import {Observable} from "rxjs";
+import {Contact} from "../models/contact.model";
 
 @Injectable({
   providedIn: 'root'
@@ -21,15 +22,15 @@ export class ContactService {
     return this.httpClient.put(this.url + id + '/favorite/', {  });
   }
 
-  storePerson(person: Person): Observable<any> {
-    return this.httpClient.post(this.url , person);
+  storeContact(contact: Contact): Observable<any> {
+    return this.httpClient.post(this.url , contact);
   }
 
-  updatePerson(id: number, person: Person): Observable<any> {
-    return this.httpClient.patch(this.url + id, person);
+  updateContact(id: number, contact: Contact): Observable<any> {
+    return this.httpClient.patch(this.url + id, contact);
   }
 
-  deletePerson(id: number): Observable<any> {
+  deleteContact(id: number): Observable<any> {
     return this.httpClient.delete(this.url + id);
   }
 
