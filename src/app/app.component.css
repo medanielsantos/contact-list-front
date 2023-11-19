@@ -1,3 +1,19 @@
-.actions{
-  display: table-cell;
+.container {
+  padding: 50px;
+}
+
+.actions .mat-mdc-button-base {
+  margin: 8px 8px 8px 0;
+}
+table {
+  width: 80%;
+}
+
+.mat-mdc-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+
+td, th {
+  width: 25%;
 }

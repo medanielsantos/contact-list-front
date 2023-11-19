@@ -5,6 +5,8 @@ import {environment} from "../environments/environment";
 import {PersonService} from "./services/person.service";
 import {Person} from "./models/person.model";
 import {MatSort} from "@angular/material/sort";
+import {MatDialog} from "@angular/material/dialog";
+import {EditComponent} from "./person/edit/edit.component";
 
 
 @Component({
@@ -24,12 +26,24 @@ export class AppComponent implements OnInit{
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
-  constructor(private personService: PersonService) {
+  constructor(
+    private dialog: MatDialog,
+    private personService: PersonService
+  ) {
     this.getPersonList();
   }
 
   ngOnInit() {
     this.getPersonList();
+  }
+
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLocaleLowerCase();
+
+    if (this.dataSource.paginator) {
+      this.dataSource.paginator.firstPage();
+    }
   }
 
   getPersonList() {
@@ -42,6 +56,45 @@ export class AppComponent implements OnInit{
         this.dataSource.sort = this.sort;
 
         console.log(this.dataSource);
+      },
+      error: (error) => {
+        console.log(error);
+      }
+    });
+  }
+
+  toggleFavorite(id: number) {
+    this.personService.favoritePerson(id).subscribe({
+      next: (res) => {
+        this.getPersonList();
+      },
+      error: (error) => {
+        console.log(error);
+      }
+    });
+  }
+
+  editPerson(id: number) {
+    const openDialog = this.dialog.open(EditComponent);
+
+    openDialog.afterClosed().subscribe({
+      next: (res) => {
+        this.personService.editPerson(id).subscribe({
+          next: (res) => {
+            this.getPersonList();
+          },
+          error: (error) => {
+            console.log(error);
+          }
+        });
+      }
+    });
+  }
+
+  deletePerson(id: number) {
+    this.personService.deletePerson(id).subscribe({
+      next: (res) => {
+        this.getPersonList();
       },
       error: (error) => {
         console.log(error);
