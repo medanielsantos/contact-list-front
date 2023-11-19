@@ -25,7 +25,7 @@ export class PersonService {
   }
 
   favoritePerson(id: number): Observable<any> {
-    return this.httpClient.put(this.url + '/person/' + id + '/favorite/', { id });
+    return this.httpClient.put(this.url + '/person/' + id + '/favorite/', {  });
   }
 
   storePerson(person: Person): Observable<any> {

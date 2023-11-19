@@ -6,6 +6,7 @@ import {Person} from "./models/person.model";
 import {MatSort} from "@angular/material/sort";
 import {MatDialog, MatDialogRef} from "@angular/material/dialog";
 import {StoreComponent} from "./person/store/store.component";
+import {ViewComponent} from "./person/view/view.component";
 
 
 @Component({
@@ -98,6 +99,17 @@ export class AppComponent implements OnInit{
         });
 
         this.openAfterModal(openDialog);
+      }
+    });
+  }
+
+  showDetails(id: number) {
+    this.personService.getPersonById(id).subscribe({
+      next: (res) => {
+        const openDialog = this.dialog.open(ViewComponent, {
+          width: '700px',
+          data: res.data
+        });
       }
     });
   }

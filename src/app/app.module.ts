@@ -15,11 +15,13 @@ import {MatDialogModule} from "@angular/material/dialog";
 import {MatCheckboxModule} from "@angular/material/checkbox";
 import { StoreComponent } from './person/store/store.component';
 import {ReactiveFormsModule} from "@angular/forms";
+import { ViewComponent } from './person/view/view.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    StoreComponent
+    StoreComponent,
+    ViewComponent
   ],
   imports: [
     BrowserModule,
