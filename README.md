@@ -1,27 +1,70 @@
-# ContactApp
+# Test build application
+Our goal was to have a list of contacts
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.0.0.
 
-## Development server
+Repository:
+Front Angular 16: https://github.com/medanielsantos/contact-list-front
+Laravel: https://github.com/medanielsantos/list-contact
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+### Extra Implementations
 
-## Code scaffolding
+ - CI GitHub backend application
+	 - Tests
+	 - Verify Pint
+	 - To see https://github.com/medanielsantos/list-contact/actions
+	 
+	 
+ - implements favorite contact
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+# Running Step 1
 
-## Build
+    pa check:balanced-brackets    
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+File location
 
-## Running unit tests
+    app/Console/Commands/CheckBalancedBrackets.php
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+# Run Step 2 and 3
 
-## Running end-to-end tests
+Backend:
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+    php artisan server
 
-## Further help
+Documentação Postman
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+    docs/Contacts.postman_collection.json
+
+front
+
+    npm i && npm start
+
+## Enpoints
+
+Person
+
+ - Create Person
+ - Update Person
+ - Show Person
+ - List Peoples
+ - Delete Person
+ - Force Delete Person
+ - Favorite Person
+
+Contact
+
+ - Create Contact
+ - Update Person
+ - Show Contact
+ - List Contact
+ - Delete Contact
+ - Force Delete Contact
+ - Favorite Contact 
+
+
+## Running Test
+
+    php artisan test
+
+
+
+
