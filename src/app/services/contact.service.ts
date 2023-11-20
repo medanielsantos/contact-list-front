@@ -22,6 +22,10 @@ export class ContactService {
     return this.httpClient.put(this.url + id + '/favorite/', {  });
   }
 
+  getContactById(id: number): Observable<any> {
+    return this.httpClient.get(this.url + id);
+  }
+
   storeContact(contact: Contact): Observable<any> {
     return this.httpClient.post(this.url , contact);
   }

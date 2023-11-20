@@ -5,7 +5,7 @@ import {PersonService} from "./services/person.service";
 import {Person} from "./models/person.model";
 import {MatSort} from "@angular/material/sort";
 import {MatDialog, MatDialogRef} from "@angular/material/dialog";
-import {StoreComponent} from "./person/store/store.component";
+import {StorePersonComponent} from "./person/store-person/store-person.component";
 import {ViewComponent} from "./person/view/view.component";
 
 
@@ -83,7 +83,7 @@ export class AppComponent implements OnInit{
   }
 
   addPerson() {
-    const openDialog = this.dialog.open(StoreComponent, {
+    const openDialog = this.dialog.open(StorePersonComponent, {
       width: '500px',
     });
 
@@ -93,7 +93,7 @@ export class AppComponent implements OnInit{
   updatePerson(id: number) {
     this.personService.getPersonById(id).subscribe({
       next: (res) => {
-        const openDialog = this.dialog.open(StoreComponent, {
+        const openDialog = this.dialog.open(StorePersonComponent, {
           width: '500px',
           data: res.data
         });
@@ -114,7 +114,7 @@ export class AppComponent implements OnInit{
     });
   }
 
-  private openAfterModal(openDialog: MatDialogRef<StoreComponent, any>) {
+  private openAfterModal(openDialog: MatDialogRef<StorePersonComponent, any>) {
     openDialog.afterClosed().subscribe({
       next: () => {
         this.personService.getPerson().subscribe({

@@ -6,11 +6,11 @@ import {Observable} from "rxjs";
 import {Person} from "../../models/person.model";
 
 @Component({
-  selector: 'app-store',
-  templateUrl: './store.component.html',
-  styleUrls: ['./store.component.css']
+  selector: 'app-store-person',
+  templateUrl: './store-person.component.html',
+  styleUrls: ['./store-person.component.css']
 })
-export class StoreComponent implements OnInit{
+export class StorePersonComponent implements OnInit{
 
   person$ = new Observable<Person[]>();
 

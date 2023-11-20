@@ -13,16 +13,19 @@ import {MatIconModule} from "@angular/material/icon";
 import {MatInputModule} from "@angular/material/input";
 import {MatDialogModule} from "@angular/material/dialog";
 import {MatCheckboxModule} from "@angular/material/checkbox";
-import { StoreComponent } from './person/store/store.component';
+import { StorePersonComponent } from './person/store-person/store-person.component';
 import {ReactiveFormsModule} from "@angular/forms";
 import { ViewComponent } from './person/view/view.component';
 import {MatToolbarModule} from "@angular/material/toolbar";
+import { StoreContactComponent } from './contact/store-contact/store-contact.component';
+import {MatSelectModule} from "@angular/material/select";
 
 @NgModule({
   declarations: [
     AppComponent,
-    StoreComponent,
-    ViewComponent
+    StorePersonComponent,
+    ViewComponent,
+    StoreContactComponent
   ],
   imports: [
     BrowserModule,
@@ -38,7 +41,8 @@ import {MatToolbarModule} from "@angular/material/toolbar";
     MatDialogModule,
     MatCheckboxModule,
     ReactiveFormsModule,
-    MatToolbarModule
+    MatToolbarModule,
+    MatSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent]
