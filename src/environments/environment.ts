@@ -1,3 +1,3 @@
 export const environment = {
-  api: ''
+  api: 'http://contact-list-api.danielsantos.me/api',
 };
